@@ -1,0 +1,7 @@
+venv/
+keys/private.pem
+*.db
+.env
+uploads/
+__pycache__/
+*.pyc
