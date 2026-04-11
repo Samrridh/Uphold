@@ -11,14 +11,14 @@ def load_public_key(path:str):
     with open(path,'rb') as f:
         return serialization.load_pem_public_key(f.read())
 
-def hash_document(content:bytes) -> str:
-    return serialization.load_pem_public_key(f.read())
+def hash_document(content: bytes) -> str:
+    return hashlib.sha256(content).hexdigest()
 
 def sign_document(content:bytes, private_key) -> str:
     signature = private_key.sign(
         content,
         padding.PSS(
-            mgf=paddding.MGF1(hashes.SHA256()),
+            mgf=padding.MGF1(hashes.SHA256()),
             salt_length=padding.PSS.MAX_LENGTH
         ),
         hashes.SHA256()

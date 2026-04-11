@@ -6,7 +6,8 @@ import uuid
 class Proof(Base):
     __tablename__ = 'proofs'
     id = Column(String,primary_key=True,default=lambda:str(uuid.uuid4()))
-    doc_hash = Column(String,nullable = False)
-    signature = Column(String,nullable = False, unique=True)
+    filename = Column(String,nullable=False)
+    doc_hash = Column(String,nullable = False, unique=True)
+    signature = Column(String,nullable = False)
     signed_at = Column(DateTime,default=datetime.utcnow)
     

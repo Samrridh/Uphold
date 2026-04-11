@@ -8,5 +8,5 @@ def save_proof(db:Session, filename: str, doc_hash:str, signature:str) -> Proof:
     db.refresh(proof)
     return proof
 
-def get_proof_by_harsh(db: Session, doc_hash:str) -> Proof | None:
+def get_proof_by_hash(db: Session, doc_hash: str) -> Proof | None:
     return db.query(Proof).filter(Proof.doc_hash == doc_hash).first()
