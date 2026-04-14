@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin - Sign Document</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body>
         <div class="container">
@@ -15,60 +15,69 @@
 
             <div id="result" class="result hidden"></div>
         </div>
-        
+
         <script>
-            const API = `${location.protocol}//${location.hostname}:8000`
+            const API = (() => {
+                const h = location.hostname
+                const p = location.port
+                const split =
+                    (h === "localhost" || h === "127.0.0.1") &&
+                    p &&
+                    p !== "8000"
+                if (split) return `${location.protocol}//${h}:8000`
+                return location.origin
+            })()
 
             function apiDetailMessage(data) {
                 const d = data && data.detail
-                if (typeof d === 'string') return d
-                if (Array.isArray(d)) return d.map((e) => e.msg || JSON.stringify(e)).join('; ')
+                if (typeof d === "string") return d
+                if (Array.isArray(d))
+                    return d.map((e) => e.msg || JSON.stringify(e)).join("; ")
                 if (d != null) return JSON.stringify(d)
-                return 'Request failed'
+                return "Request failed"
             }
 
             async function signDocument() {
-                const file = document.getElementById('fileInput').files[0]
-                if (!file) return alert('Please select a file')
+                const file = document.getElementById("fileInput").files[0]
+                if (!file) return alert("Please select a file")
 
-                const resultDiv = document.getElementById('result')
-                resultDiv.className = 'result hidden'
-                resultDiv.textContent = ''
+                const resultDiv = document.getElementById("result")
+                resultDiv.className = "result hidden"
+                resultDiv.textContent = ""
 
                 try {
                     const formData = new FormData()
-                    formData.append('file', file)
+                    formData.append("file", file)
 
                     const res = await fetch(`${API}/api/sign`, {
-                        method: 'POST',
+                        method: "POST",
                         body: formData,
                     })
                     let data = {}
                     try {
                         data = await res.json()
                     } catch {
-                        resultDiv.className = 'result danger'
-                        resultDiv.textContent =
-                            `Server returned non-JSON (${res.status}). Is the API running on port 8000?`
+                        resultDiv.className = "result danger"
+                        resultDiv.textContent = `Server returned non-JSON (${res.status}). Check the API is running.`
                         return
                     }
 
                     if (res.ok) {
-                        resultDiv.className = 'result success'
+                        resultDiv.className = "result success"
                         resultDiv.innerHTML = `
                     Document certified successfully<br>
                     <strong>Hash:</strong> ${data.doc_hash}<br>
                     <strong>Signed at:</strong> ${new Date(data.signed_at).toDateString()}
                     `
                     } else {
-                        resultDiv.className = 'result danger'
+                        resultDiv.className = "result danger"
                         resultDiv.textContent = apiDetailMessage(data)
                     }
                 } catch (err) {
-                    resultDiv.className = 'result danger'
+                    resultDiv.className = "result danger"
                     resultDiv.textContent =
                         err.message ||
-                        'Could not reach the API. Start uvicorn from the project root: uvicorn app.main:app --reload'
+                        "Could not reach the API. For local dev, run uvicorn from the project root."
                 }
             }
         </script>

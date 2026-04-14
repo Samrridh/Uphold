@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verify Government Document</h1>
+        <p>Upload the document you received.We'll tell you iff it's authentic.</p>
+        <div class="upload-box" id="uploadBox">
+            <input type="file" id="fileInput" hidden>
+            <label for="fileInput">Click to upload document</label>
+        </div>
+
+        <div class="file-name" id="fileName"></div>
+        <button type="button" id="verifyBtn" onclick="verifyDocument()" disabled>Verify</button>
+        <div id="result" class="result hidden"></div>
+    </div>
+
+    <script>
+        const API = (() => {
+            const h = location.hostname
+            const p = location.port
+            const split =
+                (h === "localhost" || h === "127.0.0.1") &&
+                p &&
+                p !== "8000"
+            if (split) return `${location.protocol}//${h}:8000`
+            return location.origin
+        })()
+        const fileInput = document.getElementById("fileInput")
+        const verifyBtn = document.getElementById("verifyBtn")
+        const fileNameDiv = document.getElementById("fileName")
+        const resultDiv = document.getElementById("result")
+
+        fileInput.addEventListener("change", () => {
+            if (fileInput.files[0]) {
+                fileNameDiv.textContent = fileInput.files[0].name
+                verifyBtn.disabled = false
+            }
+        })
+
+        async function verifyDocument() {
+            const file = fileInput.files[0]
+            if (!file) return
+
+            verifyBtn.textContent = "Verifying..."
+            verifyBtn.disabled = true
+            resultDiv.classList.add("hidden")
+
+            try {
+                const arrayBuffer = await file.arrayBuffer()
+                const hashBuffer = await crypto.subtle.digest("SHA-256", arrayBuffer)
+                const hashArray = Array.from(new Uint8Array(hashBuffer))
+                const docHash = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
+
+                const proofRes = await fetch(`${API}/api/proofs/${docHash}`)
+
+                if (!proofRes.ok) {
+                    showResult(false, "No record found. This document was never certified.")
+                    return
+                }
+                const proof = await proofRes.json()
+
+                const formData = new FormData()
+                formData.append("file", file)
+                formData.append("signature", proof.signature)
+
+                const verifyRes = await fetch(`${API}/api/verify`, {
+                    method: "POST",
+                    body: formData,
+                })
+                let data
+                try {
+                    data = await verifyRes.json()
+                } catch {
+                    showResult(
+                        false,
+                        `Verify request failed (${verifyRes.status}). Check the API is running.`
+                    )
+                    return
+                }
+
+                if (data.valid) {
+                    showResult(
+                        true,
+                        `Document is authentic. Certified on ${new Date(proof.signed_at).toDateString()}`
+                    )
+                } else {
+                    showResult(false, "Document has been tampered with.")
+                }
+            } catch (err) {
+                const isNet = err && err.name === "TypeError"
+                const msg = (err && err.message) || "Something went wrong."
+                showResult(false, msg + (isNet ? " Check the API is reachable." : ""))
+            } finally {
+                verifyBtn.textContent = "Verify"
+                verifyBtn.disabled = false
+            }
+        }
+        function showResult(success, message) {
+            resultDiv.textContent = message
+            resultDiv.className = `result ${success ? "success" : "danger"}`
+        }
+    </script>
+</body>
+</html>
