@@ -1,21 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Admin - Sign Document</title>
-        <link rel="stylesheet" href="/style.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Sign & Certify Document</h1>
-            <p>Upload a document to certify it officially.</p>
-
-            <input type="file" id="fileInput">
-            <button type="button" onclick="signDocument()">Sign Document</button>
-
-            <div id="result" class="result hidden"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uphold — Verify</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: { 950: "#07080b", 900: "#0c0e14", 800: "#12151e" },
+                        mint: { 400: "#5eead4", 500: "#2dd4bf", 600: "#14b8a6" },
+                    },
+                    boxShadow: {
+                        glow: "0 0 80px -20px rgba(45,212,191,0.35)",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="min-h-screen bg-ink-950 text-zinc-100 antialiased">
+    
+        <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
+        <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
+            <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
+                <!-- <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-mint-500 to-teal-600 text-xs font-bold text-ink-950"></span> -->
+                Uphold
+            </a>
+            <nav class="hidden items-center gap-1 text-sm text-zinc-300 md:flex">
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#features">Features</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#faq">FAQ</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/verify.html">Verify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/admin.html">Certify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/docs">API</a>
+            </nav>
+            <div class="flex items-center gap-2">
+                <a href="/verify.html" class="hidden rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-200 hover:border-white/20 hover:text-white sm:inline">Verify</a>
+                <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-ink-950 shadow-glow hover:opacity-95">Certify</a>
+            </div>
         </div>
+    </header>
 
+<!-- <main>
+    <div class="flex w-full flex-col pt-20 md:min-h-[14rem] md:flex-row md:pt-24">
+        <div class="relative min-h-[12rem] w-full md:w-3/4">
+            <img alt="" class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" />
+        </div>
+        <div class="flex w-full items-center justify-center border-t border-white/10 bg-zinc-900/90 px-4 py-8 md:w-1/4 md:border-l md:border-t-0 md:py-0">
+            <p class="text-balance text-center text-xl font-bold text-white md:text-2xl">Check your document’s proof</p>
+        </div>
+    </div>
+    <section class="relative mx-auto max-w-xl overflow-hidden px-4 pb-8 pt-8 md:pt-10">
+        <div class="rounded-2xl border border-white/10 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 backdrop-blur">
+            <div class="upload-box" id="uploadBox">
+                <input type="file" id="fileInput" hidden/>
+                <label for="fileInput" class="cursor-pointer text-sm text-zinc-300">Click to upload Document</label>
+            </div>
+            <div class="file-name mt-3 text-sm text-zinc-400 " id="fileName"></div>
+            <button type="button" id="verifyBtn" onclick="verifyDocument()" disabled class=" mt-4 w-1/2 rounded-xl bg-gradient-to-r from-mint-500 to-teal-500 py-2.5 text-sm font-semibold text-ink-950 disabled:cursor-not-allowed disabled:opacity-40">
+                Verify
+            </button>
+            <div id="result" class="mt-4 hidden rounded-xl px-4 py-3 text-sm leading-relaxed"></div>
+        </div>
+    </section>
+</main> -->
+
+
+<main>
+    
+</main>
+
+    <footer class="border-t border-white/10 bg-zinc-950/80 py-10 text-sm text-zinc-400">
+        <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between">
+            <div>
+                <p class="font-medium text-zinc-200">Uphold</p>
+                <p class="mt-1 max-w-md">Document certification and verification backed by your API.</p>
+            </div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                <a class="hover:text-white" href="/verify.html">Verify</a>
+                <a class="hover:text-white" href="/admin.html">Certify</a>
+                <a class="hover:text-white" href="/docs">API docs</a>
+            </div>
+        </div>
+    </footer>
         <script>
             const API = (() => {
                 const h = location.hostname
@@ -82,5 +151,5 @@
                 }
             }
         </script>
-    </body>
+</body>
 </html>
