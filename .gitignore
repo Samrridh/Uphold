@@ -5,3 +5,4 @@ keys/private.pem
 uploads/
 __pycache__/
 *.pyc
+public/test/
