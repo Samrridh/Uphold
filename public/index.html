@@ -4,84 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uphold — Document certification</title>
-    <!-- <link rel="stylesheet" href="/style.css"> -->
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    color: {
-                        ink : {950: "#07080b", 900: "#0c0e14", 800: "#12151e"},
+                    colors: {
+                        ink: { 950: "#07080b", 900: "#0c0e14", 800: "#12151e" },
                         mint: { 400: "#5eead4", 500: "#2dd4bf", 600: "#14b8a6" },
                     },
                     boxShadow: {
-                         glow: "0 0 80px -20px rgba(45,212,191,0.35)",
+                        glow: "0 0 80px -20px rgba(45,212,191,0.35)",
                     },
                 },
             },
         };
     </script>
 </head>
-<body>
-    <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6" >
-    <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
-        <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
-        <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br-from-mint-500 to-teal-600 text-xs font-bold text-ink-950">U</span >Uphold
-    </a>
-    <nav class="hidden items-center gap-1 text-sm text-zinc-300 md:flex">
-        <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#features">Features</a>
-        <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#faq">FAQ</a>
-        <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#verify.html">Verify</a>
-        <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#admin.html">Certify</a>
-        <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/docs">API</a>
-    </nav>
-    <div class="flex items-center gap-2">
-        <a href="/verify.html" class="hidden rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-200 hover:border-white/20 hover:text-white sm:inline">Verify</a>
-        <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-ink-950 shadow-glow hover:opacity-95">Certify</a>
-    </div>
-    </div>
-</header>
 <body class="min-h-screen bg-ink-950 text-zinc-100 antialiased">
-
+    <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
+        <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
+            <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-mint-500 to-teal-600 text-xs font-bold text-ink-950">U</span>
+                Uphold
+            </a>
+            <nav class="hidden items-center gap-1 text-sm text-zinc-300 md:flex">
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#features">Features</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#faq">FAQ</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/verify.html">Verify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/admin.html">Certify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/docs">API</a>
+            </nav>
+            <div class="flex items-center gap-2">
+                <a href="/verify.html" class="hidden rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-200 hover:border-white/20 hover:text-white sm:inline">Verify</a>
+                <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-ink-950 shadow-glow hover:opacity-95">Certify</a>
+            </div>
+        </div>
+    </header>
 
     <main>
         <section class="relative overflow-hidden pb-20 pt-28 md:pb-28 md:pt-32">
             <div class="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-mint-500/20 blur-3xl"></div>
-            <div class="pointer-events-none absolute -right-32 top-40 h-96 w-96 rounded-full bg-teal-600/15 blur-3xl"> </div>
+            <div class="pointer-events-none absolute -right-32 top-40 h-96 w-96 rounded-full bg-teal-600/15 blur-3xl"></div>
             <div class="relative mx-auto max-w-5xl px-4">
-                <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs  text-zinc-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-mint-400"></span>
-                SHA-256 +signed proofs
+                <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
+                    <span class="h-1.5 w-1.5 rounded-full bg-mint-400"></span>
+                    SHA-256 + signed proofs
                 </p>
-                <h1 class="text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl">Certify documents. Let anyone verify them in seconds.</h1>
-                <p class="mt-5 max-w-2xl text-pretty text-lg text-zinc-400">Uphold connects your signing flow with a transparent verification experience—built for trust, not friction</p>
+                <h1 class="text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl">
+                    Certify documents. Let anyone verify them in seconds.
+                </h1>
+                <p class="mt-5 max-w-2xl text-pretty text-lg text-zinc-400">
+                    Uphold connects your signing flow with a transparent verification experience—built for trust, not friction.
+                </p>
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="/admin.html" class="rounded-full bg-gradient-to-r  from-mint-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-glow ">Start certifying</a>
+                    <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-glow">Start certifying</a>
                     <a href="/verify.html" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white hover:border-white/25">Verify a document</a>
                 </div>
             </div>
         </section>
 
-        
+        <section id="features" class="border-t border-white/10 bg-ink-900/40 py-16 md:py-24">
+            <div class="mx-auto max-w-5xl px-4">
+                <h2 class="text-2xl font-semibold text-white md:text-3xl">Why Uphold</h2>
+                <p class="mt-2 max-w-2xl text-zinc-400">Issue proofs and let recipients confirm authenticity against your API.</p>
+                <div class="mt-10 grid gap-6 md:grid-cols-3">
+                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
+                        <h3 class="font-medium text-white">Immutable fingerprint</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Each file is hashed so any change breaks the chain of trust.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
+                        <h3 class="font-medium text-white">Signed proof record</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Store a signature and timestamp verifiers can audit.</p>
+                    </article>
+                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
+                        <h3 class="font-medium text-white">Public verification</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Recipients check files against stored proofs—no guesswork.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 md:py-24">
+            <div class="mx-auto max-w-3xl px-4">
+                <h2 class="text-2xl font-semibold text-white md:text-3xl">FAQ</h2>
+                <div class="mt-8 space-y-3">
+                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4 open:bg-zinc-900/60">
+                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">What does certify mean?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">Your API records a cryptographic proof for a document hash and signature so it can be verified later.</p>
+                    </details>
+                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4">
+                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">How does verification work?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">The client hashes the file, fetches the stored proof, then asks the API to validate the signature against the file bytes.</p>
+                    </details>
+                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4">
+                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">Where is the API documented?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">Open <a class="text-mint-400 underline hover:text-mint-300" href="/docs">/docs</a> for interactive Swagger.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
     </main>
-    
-    <!-- <div class="container">
-        <h1>Uphold</h1>
-        <p>Certify and verify documents with the API.</p>
-        <nav class="nav-cards">
-            <a class="card-link" href="/admin.html">Sign / certify (admin)</a>
-            <a class="card-link" href="/verify.html">Verify a document</a>
-            <a class="card-link" href="/docs">API docs (Swagger)</a>
-        </nav>
-    </div>
-    <style>
-        .nav-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
-        .card-link {
-            display: block; padding: 14px 18px; background: #1a1a1a; color: #fff;
-            text-decoration: none; border-radius: 8px; font-weight: 500; text-align: center;
-        }
-        .card-link:hover { background: #333; }
-    </style> -->
+
+    <footer class="border-t border-white/10 bg-zinc-950/80 py-10 text-sm text-zinc-400">
+        <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between">
+            <div>
+                <p class="font-medium text-zinc-200">Uphold</p>
+                <p class="mt-1 max-w-md">Document certification and verification backed by your API.</p>
+            </div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2">
+                <a class="hover:text-white" href="/verify.html">Verify</a>
+                <a class="hover:text-white" href="/admin.html">Certify</a>
+                <a class="hover:text-white" href="/docs">API docs</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

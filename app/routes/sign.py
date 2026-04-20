@@ -1,10 +1,8 @@
-from fastapi import APIRouter,UploadFile,File,Depends
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.services.crypto import load_private_key,hash_document,sign_document
-from app.services.storage import save_proof,get_proof_by_hash
-from fastapi import HTTPException
-import os
+from app.services.crypto import load_private_key_auto, hash_document, sign_document
+from app.services.storage import save_proof, get_proof_by_hash
 
 router = APIRouter()
 
@@ -17,7 +15,10 @@ async def sign(file: UploadFile = File(...), db: Session = Depends(get_db)):
     if existing:
         raise HTTPException(status_code=400, detail="Document already signed")
     
-    private_key = load_private_key(os.getenv("PRIVATE_KEY_PATH"))
+    try:
+        private_key = load_private_key_auto()
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
     signature = sign_document(content,private_key)
     proof = save_proof(db,file.filename,doc_hash,signature)
 

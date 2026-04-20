@@ -1,8 +1,9 @@
-from fastapi import APIRouter,UploadFile,File,Form
-from app.services.crypto import load_public_key,hash_document, verify_document
-import os
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
+
+from app.services.crypto import load_public_key_auto, hash_document, verify_document
 
 router = APIRouter()
+
 
 @router.post("/verify")
 async def verify(
@@ -11,7 +12,10 @@ async def verify(
 ):
     content = await file.read()
     doc_hash = hash_document(content)
-    public_key = load_public_key(os.getenv("PUBLIC_KEY_PATH"))
+    try:
+        public_key = load_public_key_auto()
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
     is_valid = verify_document(content,signature,public_key)
 
     return{

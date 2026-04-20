@@ -58,7 +58,8 @@
                         data = await res.json()
                     } catch {
                         resultDiv.className = "result danger"
-                        resultDiv.textContent = `Server returned non-JSON (${res.status}). Check the API is running.`
+                        resultDiv.textContent =
+                            `Server returned non-JSON (${res.status}). Open ${API}/api/health/keys in a new tab to see whether keys load on the server, then check Vercel function logs.`
                         return
                     }
 

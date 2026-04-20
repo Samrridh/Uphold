@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from app.routes import sign, verify,proofs
+from app.routes import health, proofs, sign, verify
 from app.database import engine, Base
 from dotenv import load_dotenv
 
@@ -22,9 +22,10 @@ app.add_middleware(
     allow_private_network=True,
 )
 
-app.include_router(sign.router,prefix="/api", tags=["Sign"])
-app.include_router(verify.router,prefix="/api",tags=["Verify"])
+app.include_router(sign.router, prefix="/api", tags=["Sign"])
+app.include_router(verify.router, prefix="/api", tags=["Verify"])
 app.include_router(proofs.router, prefix="/api", tags=["Proofs"])
+app.include_router(health.router, prefix="/api")
 
 # On Vercel, files in public/ are served from the CDN; they are not bundled into the
 # Python function, so StaticFiles would not find them. Root "/" would 404 without a route.
