@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uphold — Verify</title>
+    <title>Uphold — Certify</title>
         <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -69,7 +69,40 @@
 
 
 <main>
-    
+    <section class="relative overflow-hidden pb-16 pt-24 md:pb-20 md:pt-28">
+ <div class="flex w-full flex-col md:min-h-[14rem] md:flex-row">
+        <div class="relative min-h-[12rem] w-full md:w-3/4">
+            <img alt="" class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" />
+        </div>
+        <div class="flex w-full items-center justify-center border-t border-white/10 bg-zinc-900/90 px-4 py-8 md:w-1/4 md:border-l md:border-t-0 md:py-0">
+            <p class="text-balance text-center text-xl font-bold text-white md:text-2xl">Certify your documents. Gain Authority</p>
+        </div>
+    </div>
+        <div class="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-mint-500/20 blur-3xl"></div>
+        <div class="pointer-events-none absolute -left-32 top-40 h-96 w-96 rounded-full bg-teal-600/15 blur-3xl"></div>
+
+        <div class="relative mx-auto max-w-5xl px-4">
+            <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
+                <span class="h-1.5 w-1.5 rounded-full bg-mint-400"></span>
+                Admin · certify documents
+            </p>
+            <h1 class="text-balance text-3xl font-semibold tracking-tight text-white md:text-4xl">Certify a document</h1>
+            <p class="mt-3 max-w-2xl text-pretty text-zinc-400">Upload a file to record a signed proof. Recipients can verify it from the verify page.</p>
+
+            <div class="mt-10 mx-auto max-w-xl">
+                <div class="rounded-2xl border border-white/10 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 backdrop-blur">
+
+        <div>
+
+            <input type="file" id="fileInput">
+            <button type="button" onclick="signDocument()">Sign Document</button>
+
+            <div id="result" class="result hidden"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
     <footer class="border-t border-white/10 bg-zinc-950/80 py-10 text-sm text-zinc-400">
