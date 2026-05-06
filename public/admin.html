@@ -92,6 +92,7 @@
             <div class="mt-10 mx-auto max-w-xl">
                 <div class="rounded-2xl border border-white/10 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 backdrop-blur">
 
+                    <input type="file" id="fileInput">
         <div>
 
             <label for="fileInput" id="uploadBox" class="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-zinc-600 rounded-xl bg-zinc-900/40 hover:bg-zinc-800/50 transition cursor-pointer text-center">
@@ -104,14 +105,18 @@
               d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
       </svg>
       <p class="text-sm text-zinc-300"> Choose a file or drag it</p>
-      <!-- <input type="file" id="fileInput"> -->
 
 
 </label>
             <button type="button" onclick="signDocument()" class="mt-4 w-1/2 rounded-xl  bg-gradient-to-r from-mint-500 to-teal-500 py-2.5 text-sm font-semibold text-ink-950">Sign Document</button>
 
+            <button type="button" id="summaryBtn" onclick="summarizeDocument()" 
+            class="flex-1 rounded-xl border border-white/15 py-2.5 text-sm font-medium text-zinc-200 hover:border-white/25 disabled:cursor-not-allowed disabled:opacity-40">
+                AI Summary
+            </button>
+
             <div id="result" class="result hidden"></div>
-                    
+            <div id="summaryResult" class="mt-4 rounded-xl border border-cyan-500/35 bg-cyan-500/10 px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap"></div>    
                 </div>
             </div>
         </div>
@@ -196,6 +201,40 @@
                         "Could not reach the API. For local dev, run uvicorn from the project root."
                 }
             }
+
+            async function summarizeDocument() {
+                const file = document.getElementById("fileInput").files[0]
+                if (!file) return alert("Please select a file first.")
+
+                const btn = document.getElementById("summaryBtn")
+                const panel = document.getElementById("summaryResult")
+
+                btn.disabled = true
+                btn.textContent = "Summarizing..."
+                panel.classList.add("hidden")
+                panel.textContent = ""
+
+                try {
+                    const fd  = new FormData()
+                    fd.append("file",file)
+
+                    const res = await fetch(`${API}/api/ai/summarize`, {method:"POST", body:fd})
+                    const data = await res.json().catch(()=>({}))
+
+                    panel.textContent = res.ok
+                        ? (data.summary || "No summary returned")
+                        : (data.detail || `Request failed (${res.status})`)
+                    panel.classList.remove("hidden")
+
+                } catch (err){
+                    panel.textContent = err.message || "Could not reach AI endpoint."
+                    panel.classList.remove("hidden")
+                } finally{
+                    btn.disabled = false
+                    btn.textContent = "AI Summary"
+                }
+            }
+
         </script>
 </body>
 </html>

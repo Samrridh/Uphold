@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from app.routes import health, proofs, sign, verify
+from app.routes import health, proofs, sign, verify, ai_summarize
 from app.database import engine, Base
 from dotenv import load_dotenv
 
@@ -26,6 +26,7 @@ app.include_router(sign.router, prefix="/api", tags=["Sign"])
 app.include_router(verify.router, prefix="/api", tags=["Verify"])
 app.include_router(proofs.router, prefix="/api", tags=["Proofs"])
 app.include_router(health.router, prefix="/api")
+app.include_router(ai_summarize.router,prefix="/api",tags=["AI"])
 
 
 if os.getenv("VERCEL"):
