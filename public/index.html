@@ -10,7 +10,7 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: { 950: "#07080b", 900: "#0c0e14", 800: "#12151e" },
+                        stone: { 950: "#07080b", 900: "#0c0e14", 800: "#12151e" },
                         mint: { 400: "#5eead4", 500: "#2dd4bf", 600: "#14b8a6" },
                     },
                     boxShadow: {
@@ -21,23 +21,23 @@
         };
     </script>
 </head>
-<body class="min-h-screen bg-ink-950 text-zinc-100 antialiased">
+<body class="min-h-screen bg-stone-50 text-stone-800 antialiased">
     <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
-        <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
-            <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
-                <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-mint-500 to-teal-600 text-xs font-bold text-ink-950">U</span>
+        <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-stone-200/80 bg-white/80 shadow-md shadow-stone-200/50 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
+            <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-stone-900">
+                <!-- <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-mint-500 to-teal-600 text-xs font-bold text-stone-950">U</span> -->
                 Uphold
             </a>
-            <nav class="hidden items-center gap-1 text-sm text-zinc-300 md:flex">
-                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#features">Features</a>
-                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/#faq">FAQ</a>
-                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/verify.html">Verify</a>
-                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/admin.html">Certify</a>
-                <a class="rounded-full px-3 py-1.5 hover:bg-white/5 hover:text-white" href="/docs">API</a>
+            <nav class="hidden items-center gap-1 text-sm text-stone-600 md:flex">
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/#features">Features</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/#faq">FAQ</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/verify.html">Verify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/admin.html">Certify</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/docs">API</a>
             </nav>
             <div class="flex items-center gap-2">
-                <a href="/verify.html" class="hidden rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-200 hover:border-white/20 hover:text-white sm:inline">Verify</a>
-                <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-ink-950 shadow-glow hover:opacity-95">Certify</a>
+                <a href="/verify.html" class="hidden rounded-full border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 px-3 py-1.5 text-xs font-medium text--200 hover:border-white/20 hover:text-stone-900 sm:inline">Verify</a>
+                <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-stone-950 shadow-glow hover:opacity-95">Certify</a>
             </div>
         </div>
     </header>
@@ -47,39 +47,39 @@
             <div class="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-mint-500/20 blur-3xl"></div>
             <div class="pointer-events-none absolute -right-32 top-40 h-96 w-96 rounded-full bg-teal-600/15 blur-3xl"></div>
             <div class="relative mx-auto max-w-5xl px-4">
-                <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
+                <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg-white/5 px-3 py-1 text-xs text-stone-600">
                     <span class="h-1.5 w-1.5 rounded-full bg-mint-400"></span>
                     SHA-256 + signed proofs
                 </p>
-                <h1 class="text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl">
-                    Certify documents. Let anyone verify them in seconds.
+                <h1 class="text-balance text-4xl font-semibold tracking-tight text-stone-900 md:text-6xl">
+                    Certify documents. Authorize them.
                 </h1>
-                <p class="mt-5 max-w-2xl text-pretty text-lg text-zinc-400">
-                    Uphold connects your signing flow with a transparent verification experience—built for trust, not friction.
+                <p class="mt-5 max-w-2xl text-pretty text-lg text--400">
+                    Uphold helps you combat fake document and certificate sharing
                 </p>
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-glow">Start certifying</a>
-                    <a href="/verify.html" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white hover:border-white/25">Verify a document</a>
+                    <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-stone-950 shadow-glow">Start certifying</a>
+                    <a href="/verify.html" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-stone-900 hover:border-white/25">Verify a document</a>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="border-t border-white/10 bg-ink-900/40 py-16 md:py-24">
+        <section id="features" class="border-t border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg-stone-200  text-stone-800   py-16 md:py-24">
             <div class="mx-auto max-w-5xl px-4">
-                <h2 class="text-2xl font-semibold text-white md:text-3xl">Why Uphold</h2>
-                <p class="mt-2 max-w-2xl text-zinc-400">Issue proofs and let recipients confirm authenticity against your API.</p>
+                <h2 class="text-2xl font-semibold text-stone-900 md:text-3xl">Why Uphold</h2>
+                <p class="mt-2 max-w-2xl text--400">Issue proofs and let recipients confirm authenticity against your API.</p>
                 <div class="mt-10 grid gap-6 md:grid-cols-3">
-                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
-                        <h3 class="font-medium text-white">Immutable fingerprint</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Each file is hashed so any change breaks the chain of trust.</p>
+                    <article class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/60 p-6">
+                        <h3 class="font-medium text-stone-900">Immutable </h3>
+                        <p class="mt-2 text-sm leading-relaxed text--400">Each file is hashed, so any change can be detected and reported</p>
                     </article>
-                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
-                        <h3 class="font-medium text-white">Signed proof record</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Store a signature and timestamp verifiers can audit.</p>
+                    <article class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/60 p-6">
+                        <h3 class="font-medium text-stone-900">Signed proof </h3>
+                        <p class="mt-2 text-sm leading-relaxed text--400">Store a signature and timestamp which helps to verify authenticity</p>
                     </article>
-                    <article class="rounded-2xl border border-white/10 bg-zinc-950/60 p-6">
-                        <h3 class="font-medium text-white">Public verification</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-zinc-400">Recipients check files against stored proofs—no guesswork.</p>
+                    <article class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/60 p-6">
+                        <h3 class="font-medium text-stone-900">AI Summary</h3>
+                        <p class="mt-2 text-sm leading-relaxed text--400">With HackClub AI API using qwen-32b model to know what data in document you are actually verifying</p>
                     </article>
                 </div>
             </div>
@@ -87,35 +87,35 @@
 
         <section id="faq" class="py-16 md:py-24">
             <div class="mx-auto max-w-3xl px-4">
-                <h2 class="text-2xl font-semibold text-white md:text-3xl">FAQ</h2>
+                <h2 class="text-2xl font-semibold text-stone-900 md:text-3xl">FAQ</h2>
                 <div class="mt-8 space-y-3">
-                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4 open:bg-zinc-900/60">
-                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">What does certify mean?</summary>
-                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">Your API records a cryptographic proof for a document hash and signature so it can be verified later.</p>
+                    <details class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/50 p-4 open:bg--900/60">
+                        <summary class="cursor-pointer list-none font-medium text-stone-900 [&::-webkit-details-marker]:hidden">Does it have AI features?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text--400">Yes, we use HackClub AI API to integrate qwen-32b model to summarise the pdf uploaded</p>
                     </details>
-                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4">
-                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">How does verification work?</summary>
-                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">The client hashes the file, fetches the stored proof, then asks the API to validate the signature against the file bytes.</p>
+                    <details class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/50 p-4">
+                        <summary class="cursor-pointer list-none font-medium text-stone-900 [&::-webkit-details-marker]:hidden">How does verification work?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text--400"> The uploaded file is hashed so that any change in file will change the hash and then it can be reported. when a user uploads a file for verification, the hash is matched against the hash stored and if it matches, then congrats your deocument is verified and authentic! </p>
                     </details>
-                    <details class="rounded-2xl border border-white/10 bg-zinc-950/50 p-4">
-                        <summary class="cursor-pointer list-none font-medium text-white [&::-webkit-details-marker]:hidden">Where is the API documented?</summary>
-                        <p class="mt-3 text-sm leading-relaxed text-zinc-400">Open <a class="text-mint-400 underline hover:text-mint-300" href="/docs">/docs</a> for interactive Swagger.</p>
-                    </details>
+                    <!-- <details class="rounded-2xl border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/50 p-4">
+                        <summary class="cursor-pointer list-none font-medium text-stone-900 [&::-webkit-details-marker]:hidden">Where is the API documented?</summary>
+                        <p class="mt-3 text-sm leading-relaxed text--400">Open <a class="text-mint-400 underline hover:text-mint-300" href="/docs">/docs</a> for interactive Swagger.</p>
+                    </details> -->
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-zinc-950/80 py-10 text-sm text-zinc-400">
+    <footer class="border-t border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/80 py-10 text-sm text--400">
         <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between">
             <div>
-                <p class="font-medium text-zinc-200">Uphold</p>
-                <p class="mt-1 max-w-md">Document certification and verification backed by your API.</p>
+                <p class="font-medium text--200">Uphold</p>
+                <p class="mt-1 max-w-md">Helps you uphold document integrity :)</p>
             </div>
             <div class="flex flex-wrap gap-x-6 gap-y-2">
-                <a class="hover:text-white" href="/verify.html">Verify</a>
-                <a class="hover:text-white" href="/admin.html">Certify</a>
-                <a class="hover:text-white" href="/docs">API docs</a>
+                <a class="hover:text-stone-900" href="/verify.html">Verify</a>
+                <a class="hover:text-stone-900" href="/admin.html">Certify</a>
+                <a class="hover:text-stone-900" href="/docs">API docs</a>
             </div>
         </div>
     </footer>
