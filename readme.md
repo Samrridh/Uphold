@@ -3,9 +3,15 @@ People circulate fake circulars pretending to be from government, Others generat
 How it works
 government/company/user can upload the document which is then hashed and signed with a private key, it stores that proof and then anyone else can upload the document again to check its authenticity to check if it was the same document which was meant to be shared.
 
+-----------------------
+---------------
 HOW to run
 1. go to [https://uphold-navy.vercel.app/admin.html](https://uphold-navy.vercel.app/admin.html)
-2. upload the document, it will show 
-![alt text](image.png)
+2. upload the document
 3. then you can go to verify page at    [https://uphold-navy.vercel.app/verify.html](https://uphold-navy.vercel.app/verify.html)
-![alt text](image-1.png)
+
+4. in the certify page[https://uphold-navy.vercel.app/admin.html] there is also a new AI summerizer that uses qwen-32b model through HACKCLUB AI API
+----------
+Video Demo: https://drive.google.com/file/d/1qWGsIpyeYP5Vk9YtRFhw7CCVt7XC2oUY/view?usp=sharing
+
+Submission for Hackclub The game :)
