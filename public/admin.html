@@ -94,8 +94,21 @@
 
         <div>
 
-            <input type="file" id="fileInput">
-            <button type="button" onclick="signDocument()">Sign Document</button>
+            <label for="fileInput" id="uploadBox" class="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-zinc-600 rounded-xl bg-zinc-900/40 hover:bg-zinc-800/50 transition cursor-pointer text-center">
+
+
+                 <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-8 h-8 text-zinc-400 mb-2"
+           fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+      </svg>
+      <p class="text-sm text-zinc-300"> Choose a file or drag it</p>
+      <!-- <input type="file" id="fileInput"> -->
+
+
+</label>
+            <button type="button" onclick="signDocument()" class="mt-4 w-1/2 rounded-xl  bg-gradient-to-r from-mint-500 to-teal-500 py-2.5 text-sm font-semibold text-ink-950">Sign Document</button>
 
             <div id="result" class="result hidden"></div>
                     

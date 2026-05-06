@@ -27,8 +27,7 @@ app.include_router(verify.router, prefix="/api", tags=["Verify"])
 app.include_router(proofs.router, prefix="/api", tags=["Proofs"])
 app.include_router(health.router, prefix="/api")
 
-# On Vercel, files in public/ are served from the CDN; they are not bundled into the
-# Python function, so StaticFiles would not find them. Root "/" would 404 without a route.
+
 if os.getenv("VERCEL"):
 
     @app.get("/")
