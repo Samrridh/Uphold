@@ -22,19 +22,22 @@ def summarize_file(content: bytes, filename:str) -> str:
     is_pdf = filename.lower().endswith(".pdf")
 
     if is_pdf:
-        b64 = base64.b64encode(content).decode("utf-8")
-        file_data = f"data:application/pdf;base64,{b64}"
-        user_content = [
-            {"type": "text","text": "Return a concise summary in as less points as possible, preferablly less than 7 pointers."},
-            {
-                "type":"file",
-                "file":{
-                    "filename":filename,
-                    "file_data": file_data,
-                },
-            },
-        ]
-        plugins = [{"id":"file-parser", "pdf":{"engine": "native"}}]
+        import io
+        from pypdf import PdfReader
+        try:
+            pdf_file = io.BytesIO(content)
+            reader = PdfReader(pdf_file)
+            text = ""
+            for page in reader.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n"
+            text = text [:40_000]
+        except Exception as exc:
+            raise RuntimeError(f"Failed to parse PDF file: {exc}")
+        
+        if not text.strip():
+            raise RuntimeError("PDF contains no readable text. It might be a scanned image")
     else:
         try:
             text = content.decode("utf-8")[:40_000]

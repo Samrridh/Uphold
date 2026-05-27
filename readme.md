@@ -14,4 +14,14 @@ HOW to run
 ----------
 Video Demo: https://drive.google.com/file/d/1qWGsIpyeYP5Vk9YtRFhw7CCVt7XC2oUY/view?usp=sharing
 
+----------
+----------
+HOW To run locally
+1. clone the repo
+2. run `.\venv\Scripts\activate`
+3. install requirements `pip install -r requirements.txt`
+4. run `python generate_keys.py`
+5. run `python -m uvicorn main:app --reload --port 8000`
+6. go to [http://[IP_ADDRESS]/admin.html]
+
 Submission for Hackclub The game :)

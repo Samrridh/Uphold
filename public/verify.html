@@ -163,7 +163,8 @@
                 if (data.valid) {
                     showResult(
                         true,
-                        `Document is authentic. Certified on ${new Date(proof.signed_at).toDateString()}`
+                        `Document is authentic. Certified on ${new Date(proof.signed_at).toDateString()}<br>`+
+                        `<strong>Document Hash:</strong> <code class = "font-mono bg-black/20 px-1 py-0.5 rounded text-xs select-all"> ${docHash}</code>`
                     )
                 } else {
                     showResult(false, "Document has been tampered with.")
@@ -178,8 +179,8 @@
             }
         }
         function showResult(success, message) {
-            resultDiv.textContent = message
-            resultDiv.className = `mt-4 rounded-xl px-4 py-3 text-sm leading-relaxed border ${success ? "border-emerald-500/35 bg-emerald-500/10 text-emerald-100" : "border-red-500/35 bg-red-500/10 text-red-100"}`
+            resultDiv.innerHTML = message
+            resultDiv.className = `mt-4 rounded-xl px-4 py-3 text-sm leading-relaxed border ${success ? "border-emerald-500/35 bg-emerald-500/10 text-emerald-500" : "border-red-500/35 bg-red-500/10 text-red-100"}`
         }
     </script>
 </body>
