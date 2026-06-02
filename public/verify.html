@@ -23,21 +23,20 @@
 </head>
 <body class="min-h-screen bg-stone-50 text-stone-800 antialiased">
     
-        <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
+    <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 md:pt-6">
         <div class="pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-2xl border border-stone-200/80 bg-white/80 shadow-md shadow-stone-200/50 px-3 py-2 shadow-xl shadow-black/40 backdrop-blur-md md:rounded-full md:px-4">
             <a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-tight text-stone-900">
-                <!-- <span class="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-mint-500 to-teal-600 text-xs font-bold text-stone-950"></span> -->
                 Uphold
             </a>
             <nav class="hidden items-center gap-1 text-sm text-stone-600 md:flex">
-                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/#features">Features</a>
+                <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/features.html">Features</a>
                 <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/#faq">FAQ</a>
                 <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/verify.html">Verify</a>
                 <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/admin.html">Certify</a>
                 <a class="rounded-full px-3 py-1.5 hover:bg-stone-100 hover:text-stone-900" href="/docs">API</a>
             </nav>
             <div class="flex items-center gap-2">
-                <a href="/verify.html" class="hidden rounded-full border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 px-3 py-1.5 text-xs font-medium hover:border-stone-400 hover:text-stone-900 sm:inline">Verify</a>
+                <a href="/verify.html" class="hidden rounded-full border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 px-3 py-1.5 text-xs font-medium sm:inline">Verify</a>
                 <a href="/admin.html" class="rounded-full bg-gradient-to-r from-mint-500 to-teal-500 px-3 py-1.5 text-xs font-semibold text-stone-950 shadow-glow hover:opacity-95">Certify</a>
             </div>
         </div>
@@ -83,16 +82,17 @@
     </section>
 </main>
 
-    <footer class="border-t bg-stone-200 border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900 bg--950/80 py-10 text-sm text--400">
+ <footer class="border-t border-stone-200 bg-stone-950 py-10 text-sm text-stone-400">
         <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between">
             <div>
                 <p class="font-medium text-stone-200">Uphold</p>
                 <p class="mt-1 max-w-md">Helps you uphold document integrity :)</p>
             </div>
             <div class="flex flex-wrap gap-x-6 gap-y-2">
-                <a class="hover:text-stone-900" href="/verify.html">Verify</a>
-                <a class="hover:text-stone-900" href="/admin.html">Certify</a>
-                <a class="hover:text-stone-900" href="/docs">API docs</a>
+                <a class="hover:text-stone-200 transition" href="/features.html">Features</a>
+                <a class="hover:text-stone-200 transition" href="/verify.html">Verify</a>
+                <a class="hover:text-stone-200 transition" href="/admin.html">Certify</a>
+                <a class="hover:text-stone-200 transition" href="/docs">API docs</a>
             </div>
         </div>
     </footer>
@@ -164,7 +164,7 @@
                     showResult(
                         true,
                         `Document is authentic. Certified on ${new Date(proof.signed_at).toDateString()}<br>`+
-                        `<strong>Document Hash:</strong> <code class = "font-mono bg-black/20 px-1 py-0.5 rounded text-xs select-all"> ${docHash}</code>`
+                        `<strong>Document Hash:</strong> <code class = "font-mono bg-black/10 px-1 py-0.5 rounded text-xs select-all"> ${docHash}</code>`
                     )
                 } else {
                     showResult(false, "Document has been tampered with.")
@@ -180,7 +180,7 @@
         }
         function showResult(success, message) {
             resultDiv.innerHTML = message
-            resultDiv.className = `mt-4 rounded-xl px-4 py-3 text-sm leading-relaxed border ${success ? "border-emerald-500/35 bg-emerald-500/10 text-emerald-500" : "border-red-500/35 bg-red-500/10 text-red-100"}`
+            resultDiv.className = `mt-4 rounded-xl px-4 py-3 text-sm leading-relaxed border ${success ? "border-emerald-500/35 bg-emerald-500/10 text-emerald-800" : "border-red-500/35 bg-red-100/10 text-red-900"}`
         }
 
         const urlHash = new URLSearchParams(window.location.search).get("hash");
